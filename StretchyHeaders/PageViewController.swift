@@ -9,6 +9,7 @@
 import UIKit
 
 private let kTableHeaderHeight: CGFloat = 300.0
+private let kPageSpace: CGFloat = 20.0
 
 class PageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate {
     
@@ -114,10 +115,11 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let point = scrollView.contentOffset
+        let dx = point.x - kPageSpace
         
         let percentComplete: CGFloat
         percentComplete = fabs(point.x - self.view.frame.size.width)/self.view.frame.size.width;
-        print("point.x\(point.x)")
+        print("point.x = \(point.x)")
         
         if point.x - self.view.frame.size.width > 0 {
             print("from right to left")
@@ -131,11 +133,12 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         var headerRect: CGRect
         headerRect = CGRect(x: currentPage.tableView.bounds.width, y: currentPage.headerView.frame.origin.y, width: currentPage.tableView.bounds.width, height: currentPage.headerView.frame.size.height)
         
-        if point.x < currentPage.tableView.bounds.width {
-            headerRect.origin.x = point.x
+        if dx < currentPage.tableView.bounds.width {
+            headerRect.origin.x = dx
         }
-        headerRect.size.width = -(self.view.frame.size.width - fabs(point.x - self.view.frame.size.width))
-        print("headerRect.size.width\(headerRect.size.width)")
+        headerRect.size.width = -(self.view.frame.size.width - fabs(dx - self.view.frame.size.width))
+        print("self.view.frame.size.width = \(self.view.frame.size.width)")
+        print("headerRect.size.width = \(headerRect.size.width)")
         currentPage.headerView.frame = headerRect
 
         let nextPage = contentVCs[nextIndex]

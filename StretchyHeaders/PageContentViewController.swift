@@ -84,6 +84,7 @@ class PageContentViewController: UITableViewController {
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         updateHeaderView()
+        updateNaviBar(scrollView.contentOffset)
     }
     
     override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
@@ -91,11 +92,15 @@ class PageContentViewController: UITableViewController {
     }
     
     override func scrollViewWillBeginDecelerating(scrollView: UIScrollView) {
-        if lastContentOffset < scrollView.contentOffset.y {
+        updateNaviBar(scrollView.contentOffset)
+    }
+    
+    func updateNaviBar(contentOffset: CGPoint) {
+        if lastContentOffset < contentOffset.y {
             print("Up")
             hideNavi()
         }
-        else if lastContentOffset > scrollView.contentOffset.y {
+        else if lastContentOffset > contentOffset.y {
             print("Down")
             resetIdleTimer()
         }

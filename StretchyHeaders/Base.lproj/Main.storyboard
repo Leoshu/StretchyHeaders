@@ -8,7 +8,7 @@
         <!--Page View Controller-->
         <scene sceneID="Jfi-JA-mgr">
             <objects>
-                <pageViewController storyboardIdentifier="PageVC" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Iue-gQ-nyo" customClass="PageViewController" customModule="StretchyHeaders" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="PageVC" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" transitionStyle="scroll" pageSpacing="20" navigationOrientation="horizontal" spineLocation="none" id="Iue-gQ-nyo" customClass="PageViewController" customModule="StretchyHeaders" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Ykl-9K-VQf">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="GA3-Ug-NMb">
                             <connections>
